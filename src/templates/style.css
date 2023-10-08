@@ -1,0 +1,54 @@
+body{
+    font-size: 16px;
+    font-family: 'Source Code Pro', monospace;
+    background-color: #202020;
+}
+.header{
+    padding: 1rem 0;
+    background-color: #585757;
+}
+.header a{
+    color: #e1e1e1;
+}
+.header .header-top{
+    display: flex;
+    align-items: center;
+}
+.header .header-top .logo{
+    margin-right: 2rem;
+}
+.header .header-top .logo a{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.header .header-top .logo a span{
+    color: #adff00;
+}
+.header .menu ul{
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+}
+.header .menu ul li{
+    margin-right: 1rem;
+}
+.header .menu ul li a{
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+.header .menu ul li a:hover{
+    text-decoration: none;
+    color: #adff00;
+}
+.section-top{
+    padding: 3rem 0;
+}
+.section-top h1{
+    font-size: 2rem;
+    color: #e1e1e1;
+    text-transform: uppercase;
+}
+.section-top h1 span{
+    color: #adff00;
+}

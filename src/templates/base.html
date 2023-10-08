@@ -65,6 +65,32 @@
         .section-top h1 span{
             color: #adff00;
         }
+        .tile{
+            background-color: #b2b0b0;
+            padding: 2rem 3rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .tile::after{
+            content: '\2198';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            color: #adff00;
+            font-size: 5rem;
+            line-height: 1;
+        }
+        .tile .title{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            color: #202020;
+            transition: color 0.3s;
+            display: block;
+        }
+        .tile .title:hover{
+            color: #adff00;
+        }
     </style>
     <header class="header">
         <div class="container">
