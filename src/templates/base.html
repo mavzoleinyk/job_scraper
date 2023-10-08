@@ -7,7 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;800&family=Source+Code+Pro:wght@200;400;600;900&display=swap" rel="stylesheet">
-    <title>Работун.net</title>
+    <title>
+    {% block title %}
+    Рабaтун.net
+    {% endblock title %}
+        </title>
 </head>
 <body>
     <style>
@@ -80,16 +84,48 @@
             font-size: 5rem;
             line-height: 1;
         }
+        .tile .top{
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
         .tile .title{
             font-size: 2rem;
-            margin-bottom: 1rem;
+            line-height: 1;
+            margin-right: 2rem;
             font-weight: 900;
             color: #202020;
             transition: color 0.3s;
-            display: block;
+            display: inline-block;
         }
         .tile .title:hover{
             color: #adff00;
+        }
+        .tags{
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .tags .tag:hover{
+            background-color: #adff00;
+        }
+        .tags .tag:hover a{
+            color: #202020;
+        }
+        .tag{
+            background-color: #585757;
+            border-radius: 15px;
+            padding: 5px 10px;
+            color: #e1e1e1;
+            transition: all 0.3s;
+            margin-right: 1rem;
+        }
+        .tag:last-of-type{
+            margin-right: 0;
+        }
+        .tag a{
+            color: #e1e1e1;
+            text-decoration: none;
         }
     </style>
     <header class="header">
@@ -97,7 +133,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="header-top">
-                        <div class="logo"><a href="/"><span>{ </span>Работун.net<span> }</span></a></div>
+                        <div class="logo"><a href="/"><span>{ </span>Рабaтун.net<span> }</span></a></div>
                         <nav class="menu">
                             <ul>
                                 <li><a href="#">Вакансии</a></li>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Вся работа на Рабaтун.net
+{% endblock title %}
+
+{% block content %}
+<section class="section-main">
+    <div class="container">
+        <div class="row">
+            {% for obj in object_list %}
+            <div class="col-12">
+                <div class="tile">
+                    <div class="top">
+                        <a href="{{obj.url}}" class="title">{{obj.title}}</a>
+                        <div class="tag">{{obj.timestamp}}</div>
+                    </div>
+                    <div class="tags">
+                        <div class="tag"><a href="#">{{obj.city.name}}</a></div>
+                        <div class="tag"><a href="#">{{obj.language.name}}</a></div>
+                    </div>
+                    <div class="descr">{{obj.description}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
