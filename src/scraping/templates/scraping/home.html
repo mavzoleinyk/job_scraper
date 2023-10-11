@@ -23,6 +23,14 @@
                     <div class="descr">{{obj.description}}</div>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="tile">
+                    <div class="top">
+                        <div class="title">В текущий момент по данному запросу нет информации</div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
     </div>
@@ -30,12 +38,13 @@
 <section class="section-form">
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6 mx-auto">
                 <div class="form">
                     <form method="GET" action="">
-                        <input type="text" class="input" name="city" placeholder="Город:">
-                        <input type="text" class="input" name="language" placeholder="Специальность:">
-                        <input type="submit" value="Оправить" class="btn">
+                        <div class="form-group">
+                            {{form.as_p}}
+                            <button type="submit" class="btn">Отправить</button>
+                        </div>
                     </form>
                 </div>
             </div>
