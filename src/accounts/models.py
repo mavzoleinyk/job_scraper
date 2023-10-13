@@ -35,15 +35,15 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     email = models.EmailField(
-        verbose_name='email address',
+        verbose_name='Email address',
         max_length=255,
         unique=True,
     )
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True, verbose_name='Активный')
+    is_admin = models.BooleanField(default=False, verbose_name='Админ')
     city = models.ForeignKey('scraping.City', on_delete=models.SET_NULL, null=True, blank=True)
     city = models.ForeignKey('scraping.Language', on_delete=models.SET_NULL, null=True, blank=True)
-    send_email = models.BooleanField(default=True)
+    send_email = models.BooleanField(default=True, verbose_name='Отправить Email')
 
     objects = MyUserManager()
 
