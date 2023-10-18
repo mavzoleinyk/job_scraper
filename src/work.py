@@ -82,9 +82,36 @@ def dou(url):
         errors.append({'url': url, 'title': "Page do not response"})
     return jobs, errors
 
+def djinni(url):
+    jobs = []
+    errors = []
+    domain = 'https://djinni.co'
+    resp = requests.get(url, headers=headers)
+    if resp.status_code == 200:
+        soup = BS(resp.content, 'html.parser')
+        main_ul = soup.find('ul', attrs={'class': 'list-jobs'})
+        if main_ul:
+            li_lst = main_ul.find_all('li', attrs={'class': 'list-jobs__item'})
+            for li in li_lst:
+                title = li.find('div', attrs={'class': 'job-list-item__title'})
+                href = title.div.a['href']
+                cont = li.find('div', attrs={'class': 'job-list-item__description'})
+                content = cont.span.text
+                company = 'No name'
+                comp = li.find('a', attrs={'class': 'mr-2'})
+                if comp:
+                    company = comp.text
+                jobs.append({'title': title.text, 'url': domain + href, 'description': content, 'company': company})
+        else:
+            errors.append({'url': url, 'title': "Div does not exists"})
+    else:
+        errors.append({'url': url, 'title': "Page do not response"})
+    return jobs, errors
+
+
 if __name__ == '__main__':
-    url = 'https://jobs.dou.ua/vacancies/?city=%D0%9A%D0%B8%D1%97%D0%B2&category=Python'
-    jobs, errors = dou(url)
+    url = 'https://djinni.co/jobs/?primary_keyword=Python&region=UKR&location=kyiv'
+    jobs, errors = djinni(url)
     h = codecs.open('work.txt', 'w', 'utf-8')
     h.write(str(jobs))
     h.close()
