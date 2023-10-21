@@ -1,5 +1,4 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.models import UserManager
 
 from django.db import models
 
@@ -42,7 +41,7 @@ class MyUser(AbstractBaseUser):
     is_active = models.BooleanField(default=True, verbose_name='Активный')
     is_admin = models.BooleanField(default=False, verbose_name='Админ')
     city = models.ForeignKey('scraping.City', on_delete=models.SET_NULL, null=True, blank=True)
-    city = models.ForeignKey('scraping.Language', on_delete=models.SET_NULL, null=True, blank=True)
+    language = models.ForeignKey('scraping.Language', on_delete=models.SET_NULL, null=True, blank=True)
     send_email = models.BooleanField(default=True, verbose_name='Отправить Email')
 
     objects = MyUserManager()
