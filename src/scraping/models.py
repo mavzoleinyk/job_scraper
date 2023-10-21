@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 from django.db import models
+import jsonfield
 from scraping.utils import from_ciryllic_to_eng
 
 class City(models.Model):
@@ -49,3 +50,7 @@ class Vacancy(models.Model):
 
     def __str__(self):
         return self.title
+
+class Error(models.Model):
+    timestamp = models.DateField(auto_now_add=True)
+    data = jsonfield.JSONField()
