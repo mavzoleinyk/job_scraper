@@ -42,17 +42,28 @@ def get_urls(_settings):
         urls.append[tmp]
     return urls
 
-q = get_settings()
-u = get_urls(q)
+settings = get_settings()
+url_list = get_urls(settings)
 
-city = City.objects.filter(slug='kiev').first()
-language = Language.objects.filter(slug='python').first()
+# city = City.objects.filter(slug='kiev').first()
+# language = Language.objects.filter(slug='python').first()
 
 jobs, errors = [], []
-for func, url in parsers:
-    j, e = func(url)
-    jobs += j
-    errors += e
+
+for data in url_list:
+
+    for func, key in parsers:
+        url = data['url_data'][key]
+        j, e = func(url, city=data['city'], language=data['language'])
+        jobs += j
+        errors += e
+
+for job in jobs:
+    v = Vacancy(**job)
+    try:
+        v.save()
+    except DatabaseError:
+        pass
 if errors:
     er = Error(data=errors).save()
 
